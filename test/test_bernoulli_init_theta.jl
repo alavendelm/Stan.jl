@@ -1,8 +1,8 @@
 
-using Base.Test
+using Test
 
 
-ProjDir = joinpath(dirname(@__FILE__), "..", "Examples", "BernoulliInitTheta")
+ProjDir = joinpath(dirname(@__FILE__), "..", "Examples", "NoMamba", "BernoulliInitTheta")
 cd(ProjDir) do
 
   isdir("tmp") &&
@@ -45,7 +45,7 @@ cd(ProjDir) do
       adapt=1);
 
       sim1 = stan(stanmodel, bernoullidata, CmdStanDir=CMDSTAN_HOME)
-      global sim1_values = round(sim1.value[1, end, :], 1)
+      global sim1_values = round(sim1.value[1, end, :], digits=1)
 
   isdir("tmp") &&
     rm("tmp", recursive=true);

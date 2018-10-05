@@ -1,7 +1,7 @@
 # Test script to test Stan on Windows
 
 try
-  global CMDSTAN_HOME = @static is_windows() ? "C:\\cmdstan" : CMDSTAN_HOME
+  global CMDSTAN_HOME = @static Sys.iswindows() ? "C:\\cmdstan" : CMDSTAN_HOME
   Pkg.rm("Stan")
   Pkg.rm("Stan")
   Pkg.clone("Stan")
@@ -11,7 +11,7 @@ end
 
 # Go to the Stan.jl package directory
 
-ProjDir = joinpath(dirname(@__FILE__), "..", "Examples", "Bernoulli")
+ProjDir = joinpath(dirname(@__FILE__), "..", "Examples", "NoMamba", "Bernoulli")
 cd(ProjDir) do
 
 isdir("tmp") &&
